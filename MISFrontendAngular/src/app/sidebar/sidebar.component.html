@@ -1,0 +1,56 @@
+
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text">
+            <div class="logo-img">
+                <img src="/assets/img/angular2-logo-white.png"/>
+            </div>
+            ePortal - PMF
+        </a>
+    </div>
+    <ul class="nav responsive-nav">
+        <li *ngIf="isMobileMenu()">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-dashboard"></i>
+				<p class="hidden-lg hidden-md">Početna stranica</p>
+            </a>
+        </li>
+        <li class="dropdown" *ngIf="isMobileMenu()">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-globe"></i>
+                    <b class="caret hidden-sm hidden-xs"></b>
+                    <span class="notification hidden-sm hidden-xs">1</span>
+					<p class="hidden-lg hidden-md">
+						1 Obaveštenje
+						<b class="caret"></b>
+					</p>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Prijava ispita za julski rok</a></li>
+              </ul>
+        </li>
+        <li *ngIf="isMobileMenu()">
+           <a>
+                <i class="fa fa-search"></i>
+				<p class="hidden-lg hidden-md">Pretraga</p>
+            </a>
+        </li>
+        <li *ngIf="isMobileMenu()">
+           <a href="">
+               <p>Nalog</p>
+            </a>
+        </li>
+        <li *ngIf="isMobileMenu()">
+            <a>
+                <p>Odjava</p>
+            </a>
+        </li>
+        <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a  [routerLink]="[menuItem.path]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

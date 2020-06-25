@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Aktivni predmeti u tekućem semestru</h4>
+                        <p class="category">* demo *</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let h of header">{{ h }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sub of subjects">
+                                        <td>{{sub.pred.nazivPredmeta}}</td>
+                                        <td>{{sub.pred.espb}}</td>
+                                        <td>{{sub.pred.semestar}}</td>
+                                        <td>{{sub.prof.ime}} {{sub.prof.prezime}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" 
+                                                    rel="tooltip" 
+                                                    title="Prijavi ispit" 
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    (click)="prijaviIspit(1, sub.pred.nazivPredmeta)">
+                                                <i class="fa fa-edit"></i>Prijavi ispit za junski rok
+                                            </button>
+                                        </td>
+                                    </tr> 
+                                </tbody>
+                          </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="header">
+                        <h4 class="title">Prijavljeni ispiti za junski rok</h4>
+                        <p class="category">* demo *</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let h of headerForPrijava">{{ h }}</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <tr *ngFor="let i of ispits">
+                                    <td >{{i.predmet}}</td>
+                                    <td >Junski</td>
+                                    <td>
+                                        <img src="assets/img/checkmark.png">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="header">
+                        <h4 class="title">Položeni ispiti u junskom roku</h4>
+                        <p class="category">* demo *</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let h of headerForPolozeni">{{ h }}</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <tr *ngFor="let i of polozeni">
+                                    <td >{{i.predmet}}</td>
+                                    <td >{{i.ocena}}</td>
+                                    <td >{{i.datum}}</td>
+                                    <td ng-if="i.ocena > 5" [hidden]="i.ocena === 5">
+                                        <img src="assets/img/checkmark.png">
+                                    </td>
+                                    <td ng-if="i.ocena === 5" [hidden]="i.ocena > 5">  
+                                        <img src="assets/img/close-icon.png">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

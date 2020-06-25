@@ -1,0 +1,67 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Moji kursevi</h4>
+                    </div>
+                    <div class="content">
+                        <div class="table-full-width">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let sub of subjects">
+                                        <td>
+                                            <img src="assets/img/imgsub.jpg">
+                                        </td>
+                                        <td>{{ sub.pred.nazivPredmeta }}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" 
+                                                    rel="tooltip" 
+                                                    title="Pogledaj detalje" 
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    (click)="seeDetails(sub.pred.idPredmet, sub.prof.idProfesor)">
+                                                <i class="fa fa-edit"></i>Pogledaj detalje
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user" [style.visibility]="isDivVisible ? 'visible' : 'hidden'" >
+                    <div class="image">
+                        <img src="assets/img/pmf.png" alt="..."/>
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <a href="#">
+                                <img class="avatar border-gray" src="assets/img/faces/face-1.jpg" alt="..."/>
+
+                                <h5 class="title" 
+                                    style="font-weight: bold;"
+                                    *ngIf="pred != null">Naziv kursa: <h5 style="color:red">{{ pred.nazivPredmeta }}</h5></h5>
+                                <h5 class="title" 
+                                    style="font-weight: bold;"
+                                    *ngIf="pred != null">Broj ESPB: <h5 style="color:red">{{ pred.espb }}</h5></h5>
+                                <h5 class="title" 
+                                    style="font-weight: bold;"
+                                    *ngIf="pred != null">Semestar: <h5 style="color:red">{{ pred.semestar }}</h5></h5>
+
+                                <h5 class="title" 
+                                    style="font-weight: bold;"
+                                    *ngIf="prof != null">Predavač kursa: <h5 style="color:red">{{ prof.ime }} {{ prof.prezime }}</h5><br/>
+                                </h5>
+                            </a>
+                        </div>
+                        <button (click)="isDivVisible = false"
+                                style="background-color: #eb4034; color: white; float: right;">Zatvori pregled</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
