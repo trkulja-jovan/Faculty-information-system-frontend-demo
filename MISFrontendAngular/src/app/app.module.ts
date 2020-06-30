@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HomeService } from './services/home.service';
 import { UserService } from './services/user.service';
 import { PredmetiService } from './services/predmeti.service';
+import { ProfesorService } from './services/profesor.service';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { PredmetiService } from './services/predmeti.service';
     AppComponent,
     AdminLayoutComponent
   ],
-  providers: [HomeService, UserService, PredmetiService],
+  providers: [HomeService, UserService, PredmetiService, ProfesorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,9 +17,16 @@ export class PredmetiService {
   constructor(private http : HttpClient) { 
   }
 
-  public savePrijava(idStudent : number, idPredmet : number) : Observable<boolean>{
+  public savePrijava(student : Student, predmet : Predmet) : Observable<boolean>{
 
-    return this.http.get<boolean>(this.baseUrl + "/prijaviIspit?idStudent=1&idPredmet=" + idPredmet);
+    var ispit = new Ispit(0, new Date(), predmet, student);
+
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(ispit);
+
+    return this.http.post<boolean>(this.baseUrl + "/prijaviIspit",body, {
+      'headers' : headers
+    });
   }
 
   public getPrijavljeni() : Observable<Ispit[]>{

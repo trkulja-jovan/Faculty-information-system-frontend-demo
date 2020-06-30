@@ -54,7 +54,7 @@ export class TablesComponent implements OnInit {
                     this.predmet = elem.pred;
                 }
             });
-            await this.predServ.savePrijava(idStudent, this.predmet.idPredmet).subscribe(data => this.uspesno = data);
+            await this.predServ.savePrijava(this.student, this.predmet).subscribe(data => this.uspesno = data);
             this.predServ.getPrijavljeni().subscribe(data => this.ispits = data);
         } 
     }

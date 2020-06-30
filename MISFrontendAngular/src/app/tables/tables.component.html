@@ -51,7 +51,7 @@
                             </thead> 
                             <tbody>
                                 <tr *ngFor="let i of ispits">
-                                    <td >{{i.predmet}}</td>
+                                    <td >{{i.predmet.nazivPredmeta}}</td>
                                     <td >Junski</td>
                                     <td>
                                         <img src="assets/img/checkmark.png">
@@ -77,7 +77,7 @@
                             </thead> 
                             <tbody>
                                 <tr *ngFor="let i of polozeni">
-                                    <td >{{i.predmet}}</td>
+                                    <td >{{i.predmet.nazivPredmeta}}</td>
                                     <td >{{i.ocena}}</td>
                                     <td >{{i.datum}}</td>
                                     <td ng-if="i.ocena > 5" [hidden]="i.ocena === 5">

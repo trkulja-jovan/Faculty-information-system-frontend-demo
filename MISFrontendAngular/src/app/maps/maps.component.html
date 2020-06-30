@@ -1,9 +1,73 @@
 <div class="main-content">
-
-          <ngui-map zoom="13" center="40.748817,-73.985428" style="margin-top:60px;height: 100%; width: 100%; position: absolute;top: 0px;
-    left: 0px;
-    background-color: rgb(229, 227, 223);">
-              <marker [position]="[40.748817,-73.985428]"></marker>
-          </ngui-map>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Prikaz profesorskog dela * demo * </h4>
+                    </div>
+                    <div class="content">
+                        <div class="table-full-width">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Izaberite profesora</td>
+                                        <td>
+                                                <select name="profCombo" 
+                                                        [(ngModel)]="prof" 
+                                                        (change)="getPredmets(prof.idProfesor)">
+                
+                                                    <option *ngFor="let p of profesors" 
+                                                            [ngValue]="p">{{p.ime}} {{p.prezime}}</option>
+                                                </select>
+                                        </td> 
+                                    </tr>
+                                    <tr *ngFor="let pre of predmets">
+                                        <td>
+                                            <img src="assets/img/imgsub.jpg">
+                                        </td>
+                                        <td>{{ pre.nazivPredmeta }}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" 
+                                                    rel="tooltip" 
+                                                    title="Pogledaj detalje" 
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    (click)="pogledajStudente(pre.idPredmet)">
+                                                <i class="fa fa-edit"></i>Pogledaj studente koji slušaju kurs
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card card-plain" [style.visibility]="isDivVisible ? 'visible' : 'hidden'">
+                    <div class="header">
+                        <h4 class="title">Studenti koji slušaju izabrani predmet</h4>
+                        <p class="category">* demo *</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let s of headerForStudent">{{ s }}</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <tr *ngFor="let st of students">
+                                    <td >{{st.ime}}</td>
+                                    <td >{{st.prezime}}</td>
+                                    <td >{{st.brIndeksa}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
