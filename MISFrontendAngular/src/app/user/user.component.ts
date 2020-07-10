@@ -11,11 +11,12 @@ export class UserComponent implements OnInit {
 
   private student : Student;
 
-  constructor(public service : UserService) { 
-    service.getStudentInfo().subscribe(data => this.student = data);
+  constructor(private service : UserService) { 
+    
   }
 
   ngOnInit() {
+    this.service.getStudentInfo().subscribe(data => this.student = data);
   }
 
 }

@@ -29,22 +29,20 @@ export class TablesComponent implements OnInit {
     private student : Student;
     private predmet : Predmet;
 
-    private uspesno : boolean;
+    private ispit : Ispit;
 
     constructor(public homeServ : HomeService, public predServ : PredmetiService, public userServ : UserService) { 
         
         this.header = ["Naziv predmeta", "Broj espb", "Semestar", "Profesor"];
         this.headerForPrijava = ["Naziv predmeta", "Rok", "Ispit prijavljen"];
         this.headerForPolozeni = ["Naziv predmeta", "Ocena", "Datum polaganja", "Predmet položen"];
+    }
 
+    ngOnInit() {
         this.homeServ.getSubjects().subscribe(data => this.subjects = data);
         this.userServ.getStudentInfo().subscribe(data => this.student = data);
         this.predServ.getPrijavljeni().subscribe(data => this.ispits = data);
         this.predServ.getPolozeni().subscribe(data => this.polozeni = data);
-    }
-
-    ngOnInit() {
-      
     }
 
     public async prijaviIspit(idStudent : number, nazivPredmeta : string) {
@@ -54,7 +52,7 @@ export class TablesComponent implements OnInit {
                     this.predmet = elem.pred;
                 }
             });
-            await this.predServ.savePrijava(this.student, this.predmet).subscribe(data => this.uspesno = data);
+            await this.predServ.savePrijava(this.student, this.predmet).subscribe(data => this.ispit = data);
             this.predServ.getPrijavljeni().subscribe(data => this.ispits = data);
         } 
     }

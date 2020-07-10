@@ -21,11 +21,12 @@ export class HomeComponent implements OnInit {
     
   constructor(public service: HomeService) { 
 
-    this.service.getSubjects().subscribe(data => this.subjects = data);
     this.isDivVisible = false;
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.service.getSubjects().subscribe(data => this.subjects = data);
+  }
 
   public seeDetails(idPredmet : number, idProfesor : number){
     this.isDivVisible = true;
